@@ -5,13 +5,23 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:vsshell="clr-namespace:Microsoft.VisualStudio.Shell;assembly=Microsoft.VisualStudio.Shell.15.0"
+    xmlns:local="clr-namespace:HttpAnalyzer.Components.UserControls"
     Background="{DynamicResource {x:Static vsshell:VsBrushes.WindowKey}}"
     Foreground="{DynamicResource {x:Static vsshell:VsBrushes.WindowTextKey}}"
     mc:Ignorable="d"
     d:DesignHeight="300" 
-    d:DesignWidth="300"
+    d:DesignWidth="800"
     Name="ToolWindow">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <local:RequestActionPanelControl Grid.Row="0"/>
+        <local:RequestPanelControl Grid.Row="1"/>
+        <local:ResponsePanelControl Grid.Row="2"/>
+        <local:ResponseStatusPanelControl Grid.Row="3"/>
     </Grid>
 </UserControl>

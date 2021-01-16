@@ -51,6 +51,18 @@
     <Compile Include="Components\UserControls\HttpAnalyzerWindowControl.xaml.cs">
       <DependentUpon>HttpAnalyzerWindowControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Components\UserControls\RequestActionPanelControl.xaml.cs">
+      <DependentUpon>RequestActionPanelControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\UserControls\RequestPanelControl.xaml.cs">
+      <DependentUpon>RequestPanelControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\UserControls\ResponsePanelControl.xaml.cs">
+      <DependentUpon>ResponsePanelControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\UserControls\ResponseStatusPanelControl.xaml.cs">
+      <DependentUpon>ResponseStatusPanelControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="HttpAnalyzerPackage.cs" />
   </ItemGroup>
@@ -79,6 +91,22 @@
   <ItemGroup />
   <ItemGroup>
     <Page Include="Components\UserControls\HttpAnalyzerWindowControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\UserControls\RequestActionPanelControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\UserControls\RequestPanelControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\UserControls\ResponsePanelControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\UserControls\ResponseStatusPanelControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,0 +1,42 @@
+﻿<UserControl 
+    x:Class="HttpAnalyzer.Components.UserControls.ResponsePanelControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:local="clr-namespace:HttpAnalyzer.Components.UserControls"
+    mc:Ignorable="d" 
+    d:DesignHeight="450" 
+    d:DesignWidth="800">
+    <Border Padding="5">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition MinHeight="200" Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0" HorizontalAlignment="Center">
+                    <TextBlock Text="Response" VerticalAlignment="Center"/>
+                </Border>
+                <Button Grid.Column="1" Width="80" Content="Headers"/>
+                <Button Grid.Column="2" Margin="5, 0" Width="80" Content="Cookies"/>
+                <Button Grid.Column="3" Width="80" Content="Body"/>
+            </Grid>
+            <Grid Grid.Row="1">
+                
+            </Grid>
+            <Grid Grid.Row="1">
+
+            </Grid>
+            <Grid Grid.Row="1">
+
+            </Grid>
+        </Grid>
+    </Border>
+</UserControl>
