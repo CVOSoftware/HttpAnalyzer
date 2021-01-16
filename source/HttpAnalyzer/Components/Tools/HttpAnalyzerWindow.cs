@@ -3,9 +3,9 @@
 using System;
 using System.Runtime.InteropServices;
 
-using HttpAnalyzer.Components;
+using HttpAnalyzer.Components.UserControls;
 
-namespace HttpAnalyzer
+namespace HttpAnalyzer.Components.Tools
 {
     [Guid(WindowGuidString)]
     public class HttpAnalyzerWindow : ToolWindowPane

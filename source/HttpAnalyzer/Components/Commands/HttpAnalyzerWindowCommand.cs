@@ -4,7 +4,9 @@ using System;
 using System.ComponentModel.Design;
 using Task = System.Threading.Tasks.Task;
 
-namespace HttpAnalyzer
+using HttpAnalyzer.Components.Tools;
+
+namespace HttpAnalyzer.Components.Commands
 {
     internal sealed class HttpAnalyzerWindowCommand
     {

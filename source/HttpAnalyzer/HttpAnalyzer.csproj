@@ -46,9 +46,9 @@
     <StartArguments>/rootsuffix Exp</StartArguments>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="HttpAnalyzerWindow.cs" />
-    <Compile Include="HttpAnalyzerWindowCommand.cs" />
-    <Compile Include="Components\HttpAnalyzerWindowControl.xaml.cs">
+    <Compile Include="Components\Tools\HttpAnalyzerWindow.cs" />
+    <Compile Include="Components\Commands\HttpAnalyzerWindowCommand.cs" />
+    <Compile Include="Components\UserControls\HttpAnalyzerWindowControl.xaml.cs">
       <DependentUpon>HttpAnalyzerWindowControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -78,7 +78,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Page Include="Components\HttpAnalyzerWindowControl.xaml">
+    <Page Include="Components\UserControls\HttpAnalyzerWindowControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -87,7 +87,7 @@
     <VSCTCompile Include="HttpAnalyzerPackage.vsct">
       <ResourceName>Menus.ctmenu</ResourceName>
     </VSCTCompile>
-    <Content Include="Resources\HttpAnalyzerWindowCommand.png" />
+    <Content Include="Resources\Images\HttpAnalyzerWindowCommand.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\VSSDK\Microsoft.VsSDK.targets" Condition="'$(VSToolsPath)' != ''" />

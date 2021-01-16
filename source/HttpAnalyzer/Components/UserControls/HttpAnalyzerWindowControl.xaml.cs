@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 
-namespace HttpAnalyzer.Components
+namespace HttpAnalyzer.Components.UserControls
 {
     public partial class HttpAnalyzerWindowControl : UserControl
     {

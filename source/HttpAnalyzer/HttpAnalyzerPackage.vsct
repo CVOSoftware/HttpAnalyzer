@@ -16,7 +16,7 @@
       </Button>
     </Buttons>
     <Bitmaps>
-      <Bitmap guid="guidImages" href="Resources\HttpAnalyzerWindowCommand.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough"/>
+      <Bitmap guid="guidImages" href="Resources\Images\HttpAnalyzerWindowCommand.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough"/>
     </Bitmaps>
   </Commands>
 

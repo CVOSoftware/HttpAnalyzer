@@ -3,8 +3,10 @@
 using System;
 using System.Runtime.InteropServices;
 using System.Threading;
-
 using Task = System.Threading.Tasks.Task;
+
+using HttpAnalyzer.Components.Commands;
+using HttpAnalyzer.Components.Tools;
 
 namespace HttpAnalyzer
 {
