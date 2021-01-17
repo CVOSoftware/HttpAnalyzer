@@ -4,6 +4,7 @@ using System;
 using System.Runtime.InteropServices;
 
 using HttpAnalyzer.Components.UserControls;
+using HttpAnalyzer.Models.View;
 
 namespace HttpAnalyzer.Components.Tools
 {
@@ -14,8 +15,13 @@ namespace HttpAnalyzer.Components.Tools
 
         public HttpAnalyzerWindow() : base(null)
         {
+            var view = new HttpAnalyzerWindowControl();
+            var viewModel = new HttpAnalyzerWindowViewModel();
+
+            view.DataContext = viewModel;
+
+            Content = view;
             Caption = "Http Analyzer";
-            Content = new HttpAnalyzerWindowControl();
         }
     }
 }

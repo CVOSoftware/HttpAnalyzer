@@ -46,8 +46,13 @@
     <StartArguments>/rootsuffix Exp</StartArguments>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Base\BindableObject.cs" />
+    <Compile Include="Base\RelayCommand.cs" />
     <Compile Include="Components\Tools\HttpAnalyzerWindow.cs" />
     <Compile Include="Components\Commands\HttpAnalyzerWindowCommand.cs" />
+    <Compile Include="Components\UserControls\DictionaryControl.xaml.cs">
+      <DependentUpon>DictionaryControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Components\UserControls\HttpAnalyzerWindowControl.xaml.cs">
       <DependentUpon>HttpAnalyzerWindowControl.xaml</DependentUpon>
     </Compile>
@@ -63,6 +68,16 @@
     <Compile Include="Components\UserControls\ResponseStatusPanelControl.xaml.cs">
       <DependentUpon>ResponseStatusPanelControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\Data\DictionaryItem.cs" />
+    <Compile Include="Models\View\DictionaryControlViewModel.cs" />
+    <Compile Include="Models\View\DictionaryItemViewModel.cs" />
+    <Compile Include="Models\View\BaseRequestPanelViewModel.cs" />
+    <Compile Include="Models\View\BaseResponsePanelViewModel.cs" />
+    <Compile Include="Models\View\HttpAnalyzerWindowViewModel.cs" />
+    <Compile Include="Models\View\RequestActionPanelViewModel.cs" />
+    <Compile Include="Models\View\RequestPanelViewModel.cs" />
+    <Compile Include="Models\View\ResponsePanelViewModel.cs" />
+    <Compile Include="Models\View\ResponseStatusPanelViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="HttpAnalyzerPackage.cs" />
   </ItemGroup>
@@ -88,8 +103,14 @@
     <PackageReference Include="Microsoft.VisualStudio.SDK" Version="16.0.206" ExcludeAssets="runtime" />
     <PackageReference Include="Microsoft.VSSDK.BuildTools" Version="16.8.3038" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
+    <Folder Include="Models\Commands\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Components\UserControls\DictionaryControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Components\UserControls\HttpAnalyzerWindowControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

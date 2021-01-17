@@ -4,10 +4,15 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:vsshell="clr-namespace:Microsoft.VisualStudio.Shell;assembly=Microsoft.VisualStudio.Shell.15.0"
     xmlns:local="clr-namespace:HttpAnalyzer.Components.UserControls"
     mc:Ignorable="d" 
     d:DesignHeight="450" 
-    d:DesignWidth="800">
+    d:DesignWidth="800"
+    DataContext="{Binding RequestPanelVM}">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="VisibilityConverter"/>
+    </UserControl.Resources>
     <Border Padding="5">
         <Grid>
             <Grid.RowDefinitions>
@@ -23,22 +28,66 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-                <Border Grid.Column="0" HorizontalAlignment="Center">
-                    <TextBlock Text="Request" VerticalAlignment="Center"/>
+                <Border 
+                    Grid.Column="0" 
+                    HorizontalAlignment="Center">
+                    <TextBlock 
+                        Text="{Binding REQUEST_DESCRIPTION}" 
+                        VerticalAlignment="Center"/>
                 </Border>
-                <Button Grid.Column="1" Margin="0, 0, 5, 0" Width="80" Content="Params"/>
-                <Button Grid.Column="2" Margin="0, 0, 5, 0" Width="80" Content="Headers"/>
-                <Button Grid.Column="3" Margin="0, 0, 5, 0" Width="80" Content="Cookies"/>
-                <Button Grid.Column="4" Margin="0, 0, 5, 0" Width="80" Content="Authorization"/>
-                <Button Grid.Column="5" Width="80" Content="Body"/>
+                <Button 
+                    Grid.Column="1" 
+                    Margin="0, 0, 5, 0" 
+                    Width="80"
+                    Command="{Binding ShowParamsPanelCmd}"
+                    Content="{Binding PARAMS_DESCRIPTION}"/>
+                <Button 
+                    Grid.Column="2" 
+                    Margin="0, 0, 5, 0" 
+                    Width="80" 
+                    Command="{Binding ShowHeadersPanelCmd}"
+                    Content="{Binding HEADERS_DESCRIPTION}"/>
+                <Button 
+                    Grid.Column="3" 
+                    Margin="0, 0, 5, 0" 
+                    Width="80"
+                    Command="{Binding ShowCookiesPanelCmd}"
+                    Content="{Binding COOKIES_DESCRIPTION}"/>
+                <Button 
+                    Grid.Column="4" 
+                    Margin="0, 0, 5, 0" 
+                    Width="80"
+                    Command="{Binding ShowAuthorizationPanelCmd}"
+                    Content="{Binding AUTHORIZATION_DESCRIPTION}"/>
+                <Button 
+                    Grid.Column="5" 
+                    Width="80"
+                    Command="{Binding ShowBodyPanelCmd}"
+                    Content="{Binding BODY_DESCRIPTION}"/>
             </Grid>
-            <Grid Grid.Row="1">
+            <Grid 
+                Grid.Row="1" 
+                Visibility="{Binding IsParamsVisible, Converter={StaticResource VisibilityConverter}}">
+                <local:DictionaryControl/>
+            </Grid>
+            <Grid 
+                Grid.Row="1"
+                Visibility="{Binding IsHeadersVisible, Converter={StaticResource VisibilityConverter}}">
+        
+            </Grid>
+            <Grid 
+                Grid.Row="1"
+                Visibility="{Binding IsCookiesVisible, Converter={StaticResource VisibilityConverter}}">
 
             </Grid>
-            <Grid Grid.Row="1">
+            <Grid 
+                Grid.Row="1"
+                Visibility="{Binding IsAuthorizationVisible, Converter={StaticResource VisibilityConverter}}">
 
             </Grid>
-            <Grid Grid.Row="1">
+            <Grid 
+                Grid.Row="1"
+                Visibility="{Binding IsBodyVisible, Converter={StaticResource VisibilityConverter}}">
 
             </Grid>
         </Grid>
