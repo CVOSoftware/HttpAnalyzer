@@ -20,7 +20,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <local:RequestActionPanelControl Grid.Row="0" DataContext="{Binding RequestActionPanelVM}"/>
-        <local:RequestPanelControl Grid.Row="1"/>
+        <local:RequestPanelControl Grid.Row="1" DataContext="{Binding RequestPanelVM}"/>
         <local:ResponsePanelControl Grid.Row="2" DataContext="{Binding ResponsePanelVM}"/>
         <local:ResponseStatusPanelControl Grid.Row="3" DataContext="{Binding ResponseStatusPanelVM}"/>
     </Grid>
