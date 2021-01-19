@@ -15,9 +15,23 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <ComboBox Grid.Column="0" Width="100"/>
-            <TextBox Grid.Column="1" Margin="5, 0"/>
-            <Button Grid.Column="2" Content="Send" Padding="10, 0" Width="100"/>
+            <ComboBox 
+                Grid.Column="0" 
+                Width="100"
+                IsEnabled="{Binding IsRequestSending}"
+                SelectedItem="{Binding SelectedHttpMethod}"
+                ItemsSource="{Binding HttpMethods}"/>
+            <TextBox 
+                Grid.Column="1" 
+                Margin="5, 0"
+                IsEnabled="{Binding IsRequestSending}"
+                Text="{Binding Url, UpdateSourceTrigger=PropertyChanged}"/>
+            <Button 
+                Grid.Column="2"
+                Padding="10, 0"
+                Width="100"
+                Content="{Binding SendLabel}"
+                Command="{Binding SendRequestCommand}"/>
         </Grid>
     </Border>
 </UserControl>

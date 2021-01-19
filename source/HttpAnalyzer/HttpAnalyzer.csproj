@@ -80,6 +80,7 @@
     <Compile Include="Models\View\ResponseStatusPanelViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="HttpAnalyzerPackage.cs" />
+    <Compile Include="Utils\Helpers\HttpMethodHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="source.extension.vsixmanifest">

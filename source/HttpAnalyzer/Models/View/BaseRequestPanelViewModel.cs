@@ -2,26 +2,12 @@
 {
     internal abstract class BaseRequestPanelViewModel : BaseResponsePanelViewModel
     {
-        public string REQUEST_DESCRIPTION = "Request";
+        private const string PARAMS_LABEL = "Params";
 
-        public const string PARAMS_DESCRIPTION = "Params";
+        private const string AUTHORIZATION_LABEL = "Authorization";
 
-        public const string AUTHORIZATION_DESCRIPTION = "Authorization";
+        public string ParamsLabel => PARAMS_LABEL;
 
-        private bool _isParamsVisible;
-
-        private bool _isAuthorizationVisible;
-
-        public bool IsParamsVisible
-        {
-            get => _isParamsVisible;
-            set => SetValue(ref _isParamsVisible, value);
-        }
-
-        public bool IsAuthorizationVisible
-        {
-            get => _isAuthorizationVisible;
-            set => SetValue(ref _isAuthorizationVisible, value);
-        }
+        public string AuthorizationLabel => AUTHORIZATION_LABEL;
     }
 }

@@ -12,19 +12,19 @@
     <Border Padding="5">
         <Grid>
             <TabControl>
-                <TabItem Header="Params">
+                <TabItem Header="{Binding ParamsLabel}">
+                    <local:DictionaryControl DataContext="{Binding ParamsDictionaryVM}"/>
+                </TabItem>
+                <TabItem Header="{Binding HeadersLabel}">
+                    <local:DictionaryControl DataContext="{Binding HeadersDictionaryVM}"/>
+                </TabItem>
+                <TabItem Header="{Binding CookiesLabel}">
                     
                 </TabItem>
-                <TabItem Header="Headers">
+                <TabItem Header="{Binding AuthorizationLabel}">
                     
                 </TabItem>
-                <TabItem Header="Cookies">
-                    
-                </TabItem>
-                <TabItem Header="Authorization">
-                    
-                </TabItem>
-                <TabItem Header="Body">
+                <TabItem Header="{Binding BodyLabel}">
                     
                 </TabItem>
             </TabControl>

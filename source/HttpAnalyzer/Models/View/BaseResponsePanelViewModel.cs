@@ -4,36 +4,16 @@ namespace HttpAnalyzer.Models.View
 {
     internal abstract class BaseResponsePanelViewModel : BindableObject
     {
-        public const string RESPONSE_DESCRIPTION = "Response";
+        private const string HEADERS_LABEL = "Headers";
 
-        public const string HEADERS_DESCRIPTION = "Headers";
+        private const string COOKIES_LABEL = "Cookies";
 
-        public const string COOKIES_DESCRIPTION = "Cookies";
+        private const string BODY_LABEL = "Body";
 
-        public const string BODY_DESCRIPTION = "Body";
+        public string HeadersLabel => HEADERS_LABEL;
 
-        private bool _isHeadersVisible;
+        public string CookiesLabel => COOKIES_LABEL;
 
-        private bool _isCookiesVisible;
-
-        private bool _isBodyVisible;
-
-        public bool IsHeadersVisible
-        {
-            get => _isHeadersVisible;
-            set => SetValue(ref _isHeadersVisible, value);
-        }
-
-        public bool IsCookiesVisible
-        {
-            get => _isCookiesVisible;
-            set => SetValue(ref _isCookiesVisible, value);
-        }
-
-        public bool IsBodyVisible
-        {
-            get => _isBodyVisible;
-            set => SetValue(ref _isBodyVisible, value);
-        }
+        public string BodyLabel => BODY_LABEL;
     }
 }

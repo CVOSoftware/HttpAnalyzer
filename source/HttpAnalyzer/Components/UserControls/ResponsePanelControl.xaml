@@ -11,13 +11,13 @@
     <Border Padding="5">
         <Grid>
             <TabControl>
-                <TabItem Header="Headers">
+                <TabItem Header="{Binding HeadersLabel}">
+                    <local:DictionaryControl/>
+                </TabItem>
+                <TabItem Header="{Binding CookiesLabel}">
 
                 </TabItem>
-                <TabItem Header="Cookies">
-
-                </TabItem>
-                <TabItem Header="Body">
+                <TabItem Header="{Binding BodyLabel}">
 
                 </TabItem>
             </TabControl>

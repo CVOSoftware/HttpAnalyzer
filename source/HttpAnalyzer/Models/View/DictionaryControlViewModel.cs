@@ -9,15 +9,18 @@ namespace HttpAnalyzer.Models.View
 {
     internal class DictionaryControlViewModel : BindableObject
     {
-        public const string KEY_DESCRIPTION = "Key";
+        private const string KEY_LABEL = "Key";
 
-        public const string VALUE_DESCRIPTION = "Value";
-
+        private const string VALUE_LABEL = "Value";
 
         public DictionaryControlViewModel()
         {
             Collection = new ObservableCollection<DictionaryItemViewModel>();
         }
+
+        public string KeyLabel => KEY_LABEL;
+
+        public string ValueLabel => VALUE_LABEL;
 
         public ObservableCollection<DictionaryItemViewModel> Collection { get; private set; }
 

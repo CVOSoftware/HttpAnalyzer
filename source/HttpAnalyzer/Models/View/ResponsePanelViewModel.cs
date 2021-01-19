@@ -10,9 +10,13 @@ namespace HttpAnalyzer.Models.View
 {
     internal class ResponsePanelViewModel : BaseResponsePanelViewModel
     {
+        private const string RESPONSE_LABEL = "Response";
+
         public ResponsePanelViewModel()
         {
 
         }
+
+        public string ResponseLabel => RESPONSE_LABEL;
     }
 }

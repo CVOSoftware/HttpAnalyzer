@@ -11,8 +11,8 @@
     <Border>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
@@ -24,10 +24,10 @@
                     Grid.Column="1" 
                     VerticalAlignment="Center" 
                     HorizontalAlignment="Center">
-                    <TextBlock Text="{Binding KEY_DESCRIPTION}"/>
+                    <TextBlock Text="{Binding KeyLabel}"/>
                 </Border>
                 <Border Grid.Column="2">
-                    <TextBlock Text="{Binding VALUE_DESCRIPTION}"/>
+                    <TextBlock Text="{Binding ValueLabel}"/>
                 </Border>
             </Grid>
             <ListView Grid.Row="1" ItemsSource="{Binding Collection}">
