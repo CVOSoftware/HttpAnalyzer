@@ -13,17 +13,28 @@ namespace HttpAnalyzer.Models.View
     {
         private const string SEND_LABEL = "Send";
 
+        private const string STOP_LABEL = "Stop";
+
         private bool _isEditableState;
 
+        private bool _isUrlEmpty;
+
         private string _url;
+
+        private string _sendLabel;
 
         private string _selectedHttpMethod;
 
         private RelayCommand _sendRequestCmd;
 
+        private RelayCommand _clearUrlCmd;
+
         public RequestActionPanelViewModel()
         {
             _isEditableState = true;
+            _url = string.Empty;
+            _sendLabel = SEND_LABEL;
+            _selectedHttpMethod = HttpMethodHelper.GET;
             HttpMethods = HttpMethodHelper.GetAll;
         }
 
@@ -33,12 +44,29 @@ namespace HttpAnalyzer.Models.View
             set => SetValue(ref _isEditableState, value);
         }
 
-        public string SendLabel => SEND_LABEL;
+        public bool IsUrlEmpty
+        {
+            get => _isUrlEmpty;
+            set => SetValue(ref _isUrlEmpty, value);
+        }
+
+
+        public string SendLabel
+        {
+            get => _sendLabel;
+            set => SetValue(ref _sendLabel, value);
+        }
 
         public string Url
         {
             get => _url;
-            set => SetValue(ref _url, value);
+            set
+            {
+                if(SetValue(ref _url, value))
+                {
+                    IsUrlEmpty = string.IsNullOrEmpty(value) == false && value.Length > 0;
+                }
+            }
         }
 
         public string SelectedHttpMethod
@@ -51,17 +79,24 @@ namespace HttpAnalyzer.Models.View
 
         public RelayCommand SendRequestCommand => RelayCommand.Register(ref _sendRequestCmd, OnSendRequest, CanSendRequest);
 
+        public RelayCommand ClearUrlCmd => RelayCommand.Register(ref _clearUrlCmd, OnClearUrl);
+
         private void OnSendRequest(object obj)
         {
-            IsEditableState = false;
+            IsEditableState = !_isEditableState;
+            SendLabel = _isEditableState ? SEND_LABEL : STOP_LABEL;
         }
 
-        private bool CanSendRequest(object o)
+        private void OnClearUrl(object obj)
+        {
+            Url = string.Empty;
+        }
+
+        private bool CanSendRequest(object obj)
         {
             return string.IsNullOrEmpty(_url) == false
                 && string.IsNullOrWhiteSpace(_url) == false
-                && _selectedHttpMethod != null
-                && _isEditableState;
+                && _selectedHttpMethod != null;
         }
     }
 }

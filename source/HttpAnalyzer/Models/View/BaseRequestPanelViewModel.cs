@@ -1,4 +1,6 @@
-﻿namespace HttpAnalyzer.Models.View
+﻿using System.Collections.Generic;
+
+namespace HttpAnalyzer.Models.View
 {
     internal abstract class BaseRequestPanelViewModel : BaseResponsePanelViewModel
     {

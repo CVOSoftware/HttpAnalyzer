@@ -8,6 +8,9 @@
     mc:Ignorable="d" 
     d:DesignHeight="40" 
     d:DesignWidth="800">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="VisibilityConverter"/>
+    </UserControl.Resources>
     <Border Padding="5">
         <Grid>
             <Grid.ColumnDefinitions>
@@ -18,14 +21,24 @@
             <ComboBox 
                 Grid.Column="0" 
                 Width="100"
-                IsEnabled="{Binding IsRequestSending}"
+                IsEnabled="{Binding IsEditableState}"
                 SelectedItem="{Binding SelectedHttpMethod}"
                 ItemsSource="{Binding HttpMethods}"/>
-            <TextBox 
-                Grid.Column="1" 
-                Margin="5, 0"
-                IsEnabled="{Binding IsRequestSending}"
-                Text="{Binding Url, UpdateSourceTrigger=PropertyChanged}"/>
+            <Grid 
+                Grid.Column="1"
+                Margin="5, 0">
+                <TextBox 
+                    Padding="2, 2, 22, 2"
+                    VerticalAlignment="Center"
+                    IsEnabled="{Binding IsEditableState}"
+                    Text="{Binding Url, UpdateSourceTrigger=PropertyChanged}"/>
+                <Button 
+                    Width="20"
+                    HorizontalAlignment="Right"
+                    Content="X"
+                    Visibility="{Binding IsUrlEmpty, Converter={StaticResource VisibilityConverter}}"
+                    Command="{Binding ClearUrlCmd}"/>
+            </Grid>
             <Button 
                 Grid.Column="2"
                 Padding="10, 0"

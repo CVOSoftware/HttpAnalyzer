@@ -7,6 +7,14 @@ namespace HttpAnalyzer.Utils.Helpers
 {
     internal static class HttpMethodHelper
     {
+        public const string GET = "GET";
+
+        public const string POST = "POST";
+
+        public const string PUT = "PUT";
+
+        public const string DELETE = "DELETE";
+
         private static string[] _keys;
 
         private static Dictionary<string, Func<HttpMethod>> _collection;
@@ -15,10 +23,10 @@ namespace HttpAnalyzer.Utils.Helpers
         {
             _collection = new Dictionary<string, Func<HttpMethod>>
             {
-                { "GET", () => HttpMethod.Get },
-                { "POST", () => HttpMethod.Post },
-                { "PUT", () => HttpMethod.Put },
-                { "DELETE", () => HttpMethod.Delete }
+                { GET, () => HttpMethod.Get },
+                { POST, () => HttpMethod.Post },
+                { PUT, () => HttpMethod.Put },
+                { DELETE, () => HttpMethod.Delete }
             };
 
             _keys = _collection.Keys.ToArray();
