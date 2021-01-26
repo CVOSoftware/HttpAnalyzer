@@ -15,7 +15,7 @@ namespace HttpAnalyzer.Models.View
             RequestActionPanelVM = new RequestActionPanelViewModel();
             RequestPanelVM = new RequestPanelViewModel();
             ResponsePanelVM = new ResponsePanelViewModel();
-            ResponseStatusVM = new ResponseStatusPanelViewModel();
+            ResponseStatusPanelVM = new ResponseStatusPanelViewModel();
         }
 
         public RequestActionPanelViewModel RequestActionPanelVM { get; }
@@ -24,6 +24,6 @@ namespace HttpAnalyzer.Models.View
 
         public ResponsePanelViewModel ResponsePanelVM { get; }
 
-        public ResponseStatusPanelViewModel ResponseStatusVM { get; }
+        public ResponseStatusPanelViewModel ResponseStatusPanelVM { get; }
     }
 }
