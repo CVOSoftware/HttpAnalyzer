@@ -4,7 +4,10 @@ using System;
 using System.Runtime.InteropServices;
 
 using HttpAnalyzer.Components.UserControls;
+using HttpAnalyzer.Models;
+using HttpAnalyzer.Models.Data;
 using HttpAnalyzer.Models.View;
+using HttpAnalyzer.Utils.Helpers;
 
 namespace HttpAnalyzer.Components.Tools
 {
@@ -15,6 +18,8 @@ namespace HttpAnalyzer.Components.Tools
 
         public HttpAnalyzerWindow() : base(null)
         {
+            InitializeModelHub();
+
             var view = new HttpAnalyzerWindowControl();
             var viewModel = new HttpAnalyzerWindowViewModel();
 
@@ -22,6 +27,16 @@ namespace HttpAnalyzer.Components.Tools
 
             Content = view;
             Caption = "Http Analyzer";
+        }
+
+        private void InitializeModelHub()
+        {
+            ModelHub.Instance.Register(new ActionPanelModel
+            {
+                EditableState = true,
+                Url = string.Empty,
+                HttpMethod = HttpMethodHelper.GET
+            });
         }
     }
 }

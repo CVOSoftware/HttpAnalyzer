@@ -68,7 +68,10 @@
     <Compile Include="Components\UserControls\ResponseStatusPanelControl.xaml.cs">
       <DependentUpon>ResponseStatusPanelControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\Contract\IDataSubscriber.cs" />
+    <Compile Include="Models\Data\ActionPanelModel.cs" />
     <Compile Include="Models\Data\DictionaryItem.cs" />
+    <Compile Include="Models\ModelSubscriberHub.cs" />
     <Compile Include="Models\View\DictionaryControlViewModel.cs" />
     <Compile Include="Models\View\DictionaryItemViewModel.cs" />
     <Compile Include="Models\View\BaseRequestPanelViewModel.cs" />
@@ -81,6 +84,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="HttpAnalyzerPackage.cs" />
     <Compile Include="Utils\Helpers\HttpMethodHelper.cs" />
+    <Compile Include="Models\ModelHub.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="source.extension.vsixmanifest">
@@ -104,9 +108,7 @@
     <PackageReference Include="Microsoft.VisualStudio.SDK" Version="16.0.206" ExcludeAssets="runtime" />
     <PackageReference Include="Microsoft.VSSDK.BuildTools" Version="16.8.3038" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\Commands\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Page Include="Components\UserControls\DictionaryControl.xaml">
       <SubType>Designer</SubType>

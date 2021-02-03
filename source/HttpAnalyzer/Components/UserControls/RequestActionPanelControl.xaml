@@ -36,7 +36,7 @@
                     Width="20"
                     HorizontalAlignment="Right"
                     Content="X"
-                    Visibility="{Binding IsUrlEmpty, Converter={StaticResource VisibilityConverter}}"
+                    Visibility="{Binding ClearButtonVisibility, Converter={StaticResource VisibilityConverter}}"
                     Command="{Binding ClearUrlCmd}"/>
             </Grid>
             <Button 

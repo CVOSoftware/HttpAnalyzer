@@ -5,19 +5,23 @@ using System.Text;
 using System.Threading.Tasks;
 
 using HttpAnalyzer.Base;
+using HttpAnalyzer.Models.Contract;
+using HttpAnalyzer.Models.Data;
 using HttpAnalyzer.Utils.Helpers;
 
 namespace HttpAnalyzer.Models.View
 {
-    internal class RequestActionPanelViewModel : BindableObject
+    internal class RequestActionPanelViewModel : BindableObject, IDataSubscriber<ActionPanelModel>
     {
         private const string SEND_LABEL = "Send";
 
         private const string STOP_LABEL = "Stop";
 
+        private bool _canUpdate;
+
         private bool _isEditableState;
 
-        private bool _isUrlEmpty;
+        private bool _clearButtonVisibility;
 
         private string _url;
 
@@ -31,25 +35,29 @@ namespace HttpAnalyzer.Models.View
 
         public RequestActionPanelViewModel()
         {
-            _isEditableState = true;
-            _url = string.Empty;
+            ModelHub.Instance.Subscribe<RequestActionPanelViewModel, ActionPanelModel>(this);
+
             _sendLabel = SEND_LABEL;
-            _selectedHttpMethod = HttpMethodHelper.GET;
             HttpMethods = HttpMethodHelper.GetAll;
         }
 
         public bool IsEditableState
         {
             get => _isEditableState;
-            set => SetValue(ref _isEditableState, value);
+            set
+            {
+                if(SetValue(ref _isEditableState, value) && _canUpdate)
+                {
+                    UpdateModel();
+                }
+            }
         }
 
-        public bool IsUrlEmpty
+        public bool ClearButtonVisibility
         {
-            get => _isUrlEmpty;
-            set => SetValue(ref _isUrlEmpty, value);
+            get => _clearButtonVisibility;
+            set => SetValue(ref _clearButtonVisibility, value);
         }
-
 
         public string SendLabel
         {
@@ -64,7 +72,12 @@ namespace HttpAnalyzer.Models.View
             {
                 if(SetValue(ref _url, value))
                 {
-                    IsUrlEmpty = string.IsNullOrEmpty(value) == false && value.Length > 0;
+                    ClearButtonVisibility = string.IsNullOrEmpty(value) == false && value.Length > 0;
+
+                    if(_canUpdate)
+                    {
+                        UpdateModel();
+                    }
                 }
             }
         }
@@ -72,7 +85,13 @@ namespace HttpAnalyzer.Models.View
         public string SelectedHttpMethod
         {
             get => _selectedHttpMethod;
-            set => SetValue(ref _selectedHttpMethod, value);
+            set 
+            {
+                if(SetValue(ref _selectedHttpMethod, value) && _canUpdate)
+                {
+                    UpdateModel();
+                }
+            }
         }
 
         public string[] HttpMethods { get; }
@@ -84,7 +103,17 @@ namespace HttpAnalyzer.Models.View
         private void OnSendRequest(object obj)
         {
             IsEditableState = !_isEditableState;
-            SendLabel = _isEditableState ? SEND_LABEL : STOP_LABEL;
+
+            if(_isEditableState)
+            {
+                SendLabel = SEND_LABEL;
+                ClearButtonVisibility = string.IsNullOrEmpty(_url) == false && _url.Length > 0;
+            }
+            else
+            {
+                SendLabel = STOP_LABEL;
+                ClearButtonVisibility = false;
+            }
         }
 
         private void OnClearUrl(object obj)
@@ -98,5 +127,34 @@ namespace HttpAnalyzer.Models.View
                 && string.IsNullOrWhiteSpace(_url) == false
                 && _selectedHttpMethod != null;
         }
+
+        private void UpdateModel()
+        {
+            var model = new ActionPanelModel
+            {
+                EditableState = _isEditableState,
+                Url = _url,
+                HttpMethod = _selectedHttpMethod
+            };
+
+            ModelHub.Instance.UpdateWithIgnore(this, model);
+        }
+
+        #region Implementation IDataSubscriber<ActionPanelModel>
+
+        public void IsNewNotification(ActionPanelModel model)
+        {
+            IsEditableState = model.EditableState;
+            Url = model.Url;
+            SelectedHttpMethod = model.HttpMethod;
+            _canUpdate = true;
+        }
+
+        public void IsUpdateNotification(ActionPanelModel model)
+        {
+            IsNewNotification(model);
+        }
+
+        #endregion
     }
 }
