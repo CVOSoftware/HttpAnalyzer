@@ -25,21 +25,27 @@
                 Text="{Binding StatusLabel}"/>
             <TextBlock
                 Grid.Column="1" 
-                VerticalAlignment="Center"/>
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Text="{Binding Status}"/>
             <TextBlock 
                 Grid.Column="2" 
                 VerticalAlignment="Center" 
                 Text="{Binding TimeLabel}"/>
             <TextBlock 
                 Grid.Column="3" 
-                VerticalAlignment="Center"/>
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Text="{Binding Time}"/>
             <TextBlock 
                 Grid.Column="4" 
                 VerticalAlignment="Center" 
                 Text="{Binding SizeLabel}"/>
             <TextBlock 
                 Grid.Column="5" 
-                VerticalAlignment="Center"/>
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Text="{Binding Size}"/>
             <StackPanel 
                 Grid.Column="6" 
                 Orientation="Horizontal" 

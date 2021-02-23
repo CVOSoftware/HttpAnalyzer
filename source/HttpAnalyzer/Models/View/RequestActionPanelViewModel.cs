@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using HttpAnalyzer.Base;
 using HttpAnalyzer.Models.Contract;
 using HttpAnalyzer.Models.Data;
+using HttpAnalyzer.Utils;
 using HttpAnalyzer.Utils.Helpers;
 
 namespace HttpAnalyzer.Models.View
@@ -113,6 +114,10 @@ namespace HttpAnalyzer.Models.View
             {
                 SendLabel = STOP_LABEL;
                 ClearButtonVisibility = false;
+
+                var request = BuildRequest();
+
+                Task.Run(async () => await HttpService.Instance.SendAsync(request, Success, Error));
             }
         }
 
@@ -140,6 +145,36 @@ namespace HttpAnalyzer.Models.View
             ModelHub.Instance.UpdateWithIgnore(this, model);
         }
 
+        private void UnlockAfterResponse()
+        {
+            IsEditableState = !_isEditableState;
+            SendLabel = SEND_LABEL;
+            ClearButtonVisibility = string.IsNullOrEmpty(_url) == false && _url.Length > 0;
+        }
+
+        private void UpdateModelHubAfterRequest(HttpResponse model)
+        {
+            var statusPanelModel = new StatusPanelModel
+            {
+                StatusCode = model.StatusCode,
+                RequestTime = model.RequestTime,
+                Size = model.Size,
+            };
+
+            ModelHub.Instance.Update<ResponseStatusPanelViewModel, StatusPanelModel>(statusPanelModel);
+        }
+
+        private HttpRequest BuildRequest()
+        {
+            var request = new HttpRequest
+            {
+                Uri = new UriBuilder(_url).Uri,
+                Method = HttpMethodHelper.Get(_selectedHttpMethod)
+            };
+
+            return request;
+        }
+
         #region Implementation IDataSubscriber<ActionPanelModel>
 
         public void IsNewNotification(ActionPanelModel model)
@@ -153,6 +188,21 @@ namespace HttpAnalyzer.Models.View
         public void IsUpdateNotification(ActionPanelModel model)
         {
             IsNewNotification(model);
+        }
+
+        #endregion
+
+        #region Http request handlers
+
+        private void Success(HttpResponse model)
+        {
+            UnlockAfterResponse();
+            UpdateModelHubAfterRequest(model);
+        }
+
+        private void Error(Exception model)
+        {
+            UnlockAfterResponse();
         }
 
         #endregion

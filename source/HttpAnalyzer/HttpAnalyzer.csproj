@@ -71,6 +71,9 @@
     <Compile Include="Models\Contract\IDataSubscriber.cs" />
     <Compile Include="Models\Data\ActionPanelModel.cs" />
     <Compile Include="Models\Data\DictionaryItem.cs" />
+    <Compile Include="Models\Data\HttpRequest.cs" />
+    <Compile Include="Models\Data\HttpResponse.cs" />
+    <Compile Include="Models\Data\StatusPanelModel.cs" />
     <Compile Include="Models\ModelSubscriberHub.cs" />
     <Compile Include="Models\View\DictionaryControlViewModel.cs" />
     <Compile Include="Models\View\DictionaryItemViewModel.cs" />
@@ -85,6 +88,7 @@
     <Compile Include="HttpAnalyzerPackage.cs" />
     <Compile Include="Utils\Helpers\HttpMethodHelper.cs" />
     <Compile Include="Models\ModelHub.cs" />
+    <Compile Include="Utils\HttpService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="source.extension.vsixmanifest">

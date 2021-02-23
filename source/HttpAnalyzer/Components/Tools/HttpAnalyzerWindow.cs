@@ -7,6 +7,7 @@ using HttpAnalyzer.Components.UserControls;
 using HttpAnalyzer.Models;
 using HttpAnalyzer.Models.Data;
 using HttpAnalyzer.Models.View;
+using HttpAnalyzer.Utils;
 using HttpAnalyzer.Utils.Helpers;
 
 namespace HttpAnalyzer.Components.Tools
@@ -29,6 +30,12 @@ namespace HttpAnalyzer.Components.Tools
             Caption = "Http Analyzer";
         }
 
+        protected override void OnClose()
+        {
+            HttpService.Instance.Dispose();
+            base.OnClose();
+        }
+
         private void InitializeModelHub()
         {
             ModelHub.Instance.Register(new ActionPanelModel
@@ -37,6 +44,8 @@ namespace HttpAnalyzer.Components.Tools
                 Url = string.Empty,
                 HttpMethod = HttpMethodHelper.GET
             });
+
+            ModelHub.Instance.Register(new StatusPanelModel());
         }
     }
 }
